@@ -25,6 +25,9 @@
         </label>
 
         <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @favorite.user_id %>">
+
+
+
       </div>
 
       <!-- Label and input for dish_id -->
@@ -42,7 +45,12 @@
           Venue
         </label>
 
-        <input type="text" id="venue_id" name="venue_id" placeholder="Venue" class="form-control" value="<%= @favorite.venue_id %>">
+          <%=select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, @favorite.venue_id), :class => "form-control")%>
+
+
+
+
+
       </div>
 
       <!-- Label and input for notes -->

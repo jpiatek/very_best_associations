@@ -10,6 +10,15 @@
 
     </dl>
 
+          <dt>Favorites</dt>
+      <dd>
+        <ul class="list-group">
+        <% Favorite.where(:user_id => @user.id).each do |favorite| %>
+          <li class="list-group-item">
+            <%= favorite.dish.name %>, <%= favorite.venue.name %>
+          </li>
+        <% end %>
+
     <div class="btn-group btn-group-justified">
       <a href="/users" class="btn btn-primary">
         Back
@@ -21,16 +30,6 @@
         Delete
       </a>
     </div>
-
-
-      <dt>Favorites</dt>
-      <dd>
-        <ul class="list-group">
-        <% Favorite.where(:user_id => @user.id).each do |favorite| %>
-          <li class="list-group-item">
-            <%= favorite.dish.name %>, <%= favorite.venue.name %>
-          </li>
-        <% end %>
 
 
   </div>

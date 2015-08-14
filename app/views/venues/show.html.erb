@@ -16,6 +16,67 @@
 
     </dl>
 
+    <dt>Favorites</dt>
+      <dd>
+        <ul class="list-group">
+        <% Favorite.where(:venue => @venue.id).each do |favorite| %>
+          <li class="list-group-item">
+            <%= favorite.dish.name %>, <%= favorite.user.username %>
+          </li>
+        <% end %>
+
+
+
+
+<li class="list-group-item">
+     <form action="/create_favorite" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+          <%=select_tag(:user_id, options_from_collection_for_select(User.all, :id, :username), :class => "form-control")%>
+      </div>
+
+      <!-- Label and input for dish_id -->
+      <div class="form-group">
+        <label for="dish_id" class="control-label">
+          Dish
+        </label>
+      <%=select_tag(:dish_id, options_from_collection_for_select(Dish.all, :id, :name, ), :class => "form-control")%>
+      </div>
+
+      <!-- Label and input for venue_id -->
+      <div class="form-group">
+         <input type="hidden" name="venue_id" value="<%= @venue.id%>">
+
+
+    <!-- Label and input for notes -->
+      <div class="form-group">
+        <label for="notes" class="control-label">
+          Notes
+        </label>
+        <textarea id="notes" name="notes" placeholder="Notes" class="form-control" rows="3"></textarea>
+      </div>
+
+
+
+      </div>
+
+
+      <button class="btn btn-success">
+        Create Favorite
+      </button>
+    </form>
+  </div>
+  </li>
+
+
+
     <div class="btn-group btn-group-justified">
       <a href="/venues" class="btn btn-primary">
         Back

@@ -73,6 +73,16 @@
 
 
 
+         <dt>Favorites</dt>
+
+        <ul class="list-group">
+        <% Favorite.where(:user_id => @neighborhood.id).each do |favorite| %>
+          <li class="list-group-item">
+            <%= favorite.dish.name %> at <%= favorite.venue.name %> by <%= favorite.user.username %>
+          </li>
+        <% end %>
+
+
 
 
 

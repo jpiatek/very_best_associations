@@ -1,4 +1,8 @@
 class NeighborhoodsController < ApplicationController
+class Neighborhood < ActiveRecord::Base
+  has_many :venues
+  has_many :favorites, :through => :venues
+end
   def index
     @neighborhoods = Neighborhood.all
   end

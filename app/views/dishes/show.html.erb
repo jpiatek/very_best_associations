@@ -43,7 +43,7 @@
       <!-- Label and input for venue_id -->
       <div class="form-group">
         <label for="venue_id" class="control-label">
-          Dish
+          Venue
         </label>
       <%=select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, ), :class => "form-control")%>
       </div>

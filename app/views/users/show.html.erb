@@ -13,9 +13,9 @@
           <dt>Favorites</dt>
       <dd>
         <ul class="list-group">
-        <% Favorite.where(:user_id => @user.id).each do |favorite| %>
+        <% @user.favorites.each do |favorite| %>
           <li class="list-group-item">
-            <%= favorite.dish.name %>, <%= favorite.venue.name %>
+            <%= favorite.dish.name %> at <%= favorite.venue.name %>
           </li>
         <% end %>
 
